@@ -1,0 +1,1 @@
+# K8s_jira_statefulset
