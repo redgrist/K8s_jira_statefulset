@@ -62,7 +62,7 @@ spec:
              memory: "4G"
              cpu: 6
            limits:
-             memory: "8G"
+             memory: "10G"
              cpu: 8
         name: jira-set
         env:
@@ -79,9 +79,9 @@ spec:
            - name: ATL_DB_SCHEMA_NAME
              value: "public"
            - name: JVM_MINIMUM_MEMORY
-             value: 1536m
+             value: 4096m
            - name: JVM_MAXIMUM_MEMORY
-             value: 1536m
+             value: 4906m
            - name: CATALINA_CONNECTOR_PROXYNAME
              value: jira.kubernetes.local
              # jira.company.com
