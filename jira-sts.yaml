@@ -137,4 +137,3 @@ spec:
         - name: jira-pvc-shared
           persistentVolumeClaim:
             claimName: jira-pvc-shared
-
