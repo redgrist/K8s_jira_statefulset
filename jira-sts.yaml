@@ -115,11 +115,11 @@ spec:
           httpGet:
             port: 8080
             path: /status
-          initialDelaySeconds: 360
-          periodSeconds: 30
-          successThreshold: 4
-          failureThreshold: 4
-          timeoutSeconds: 10
+          initialDelaySeconds: 60
+          periodSeconds: 15
+          successThreshold: 2
+          failureThreshold: 2
+          timeoutSeconds: 5
         ports:
           - containerPort: 8080
             name: jiraport
