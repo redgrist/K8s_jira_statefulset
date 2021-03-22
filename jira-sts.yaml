@@ -134,9 +134,6 @@ spec:
         - name: jira-pvc-data
           emptyDir:
             {}
-      # - name: jira-pvc-data
-      #   persistentVolumeClaim:
-      #     claimName: jira-pvc-data
         - name: jira-pvc-shared
           persistentVolumeClaim:
             claimName: jira-pvc-shared
