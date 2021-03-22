@@ -42,13 +42,13 @@ spec:
         app: jira-set
     spec:
       initContainers:
-        - name: jsdhomeperms
+        - name: jira-home
           image: busybox
           command: ["chown", "2001:2001", "-R", "/var/atlassian/application-data/jira/"]
           volumeMounts:
             - mountPath: "/var/atlassian/application-data/jira"
               name: jira-pvc-data
-        - name: jsdsharedperms
+        - name: jira-shared
           image: busybox
           command: ["chown", "-R", "2001:2001", "/var/atlassian/shared"]
           volumeMounts:
