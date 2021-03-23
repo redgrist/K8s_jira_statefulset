@@ -11,6 +11,7 @@ metadata:
     haproxy.org/forwarded-for: "false"
     haproxy.org/load-balance: "roundrobin"
     haproxy.org/cookie-persistence: "mycookie"
+    haproxy.org/ssl-redirect: "false"
 spec:
   selector:
     app: jira-set
