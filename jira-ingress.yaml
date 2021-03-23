@@ -8,7 +8,7 @@ spec:
   tls:
   - hosts:
       - jira.kubernetes.local
-    secretName: default/kubernetes.local
+    secretName: kubernetes.local
   rules:
   - host: jira.kubernetes.local
     http:
