@@ -4,11 +4,11 @@ kind: Ingress
 metadata:
   name: jira-st-ingress
   namespace: jira
+spec:
   tls:
   - hosts:
       - jira.kubernetes.local
     secretName: kubernetes.local
-spec:
   rules:
   - host: jira.kubernetes.local
     http:
