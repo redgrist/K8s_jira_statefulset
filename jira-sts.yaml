@@ -8,7 +8,7 @@ metadata:
   namespace: jira
   annotations:
     haproxy.org/check: "true"
-    haproxy.org/forwarded-for: "true"
+    haproxy.org/forwarded-for: "false"
     haproxy.org/load-balance: "roundrobin"
     haproxy.org/cookie-persistence: "mycookie"
 spec:
