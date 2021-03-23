@@ -6,11 +6,11 @@ metadata:
     app: jira-set
   name: jira-set
   namespace: jira
-  # annotations:
-  #   haproxy.org/check: "true"
-  #   haproxy.org/forwarded-for: "false"
-  #   haproxy.org/load-balance: "roundrobin"
-  #   haproxy.org/cookie-persistence: "mycookie"
+  annotations:
+    haproxy.org/check: "true"
+    haproxy.org/forwarded-for: "false"
+    haproxy.org/load-balance: "roundrobin"
+    haproxy.org/cookie-persistence: "mycookie"
 spec:
   selector:
     app: jira-set
@@ -31,7 +31,7 @@ metadata:
   namespace: jira
 spec:
   serviceName: "jira-set"
-  replicas: 3
+  replicas: 1
   # kubectl scale statefulset/jira-set --replicas=2 -n jira
   selector:
     matchLabels:
@@ -86,10 +86,10 @@ spec:
              value: jira.kubernetes.local
              # jira.company.com
            - name: CATALINA_CONNECTOR_SCHEME
-             value: http
+             value: https
              # https
            - name: CATALINA_CONNECTOR_SECURE
-             value: "false"
+             value: "true"
              # Value = "true
            - name: CLUSTERED
              value: "true"
