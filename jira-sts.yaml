@@ -82,13 +82,13 @@ spec:
              value: 4096m
            - name: JVM_MAXIMUM_MEMORY
              value: 4906m
-           - name: CATALINA_CONNECTOR_PROXYNAME
+           - name: ATL_PROXY_NAME
              value: jira.kubernetes.local
              # jira.company.com
-           - name: CATALINA_CONNECTOR_SCHEME
+           - name: ATL_TOMCAT_SCHEME
              value: https
              # https
-           - name: CATALINA_CONNECTOR_SECURE
+           - name: ATL_TOMCAT_SECURE
              value: "true"
              # Value = "true
            - name: CLUSTERED
