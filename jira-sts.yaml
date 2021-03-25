@@ -42,6 +42,9 @@ spec:
         app: jira-set
     spec:
       initContainers:
+        - name: jira-sleep
+          image: busybox
+          command: ["sleep", "60"]
         - name: jira-home
           image: busybox
           command: ["chown", "2001:2001", "-R", "/var/atlassian/application-data/jira/"]
