@@ -31,7 +31,7 @@ metadata:
   namespace: jira
 spec:
   serviceName: "jira-set"
-  replicas: 3
+  replicas: 1
   # kubectl scale statefulset/jira-set --replicas=2 -n jira
   selector:
     matchLabels:
