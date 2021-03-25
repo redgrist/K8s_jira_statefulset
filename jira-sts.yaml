@@ -32,7 +32,7 @@ metadata:
 spec:
   serviceName: "jira-set"
   replicas: 1
-  # kubectl scale statefulset/jira-set --replicas=2 -n jira
+  # kubectl scale statefulset/jira-set --replicas=3 -n jira
   selector:
     matchLabels:
       app: jira-set
