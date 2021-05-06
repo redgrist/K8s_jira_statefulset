@@ -65,7 +65,7 @@ spec:
              memory: "4G"
              cpu: 4
            limits:
-             memory: "12G"
+             memory: "10G"
              cpu: 6
         name: jira-set
         env:
