@@ -62,11 +62,11 @@ spec:
         imagePullPolicy: Always
         resources:
            requests:
+             memory: "4G"
+             cpu: 2
+           limits:
              memory: "6G"
              cpu: 4
-           limits:
-             memory: "12G"
-             cpu: 6
         name: jira-set
         env:
            - name: ATL_JDBC_URL
