@@ -34,7 +34,7 @@ metadata:
   namespace: jira
 spec:
   serviceName: "jira-set"
-  replicas: 2
+  replicas: 1
   # kubectl scale statefulset/jira-set --replicas=3 -n jira
   selector:
     matchLabels:
@@ -44,6 +44,47 @@ spec:
       labels:
         app: jira-set
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - k8sw1
+                      - k8sw2
+                      - k8sw3
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - k8sw3
+            - weight: 80
+              preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - k8sw2
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - k8sw1
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: jira-set
+      terminationGracePeriodSeconds: 5  
       initContainers:
         - name: jira-sleep
           image: busybox
@@ -91,11 +132,13 @@ spec:
           #  - name: ATL_PROXY_NAME
           #    value: jira.kubernetes.local
              # jira.company.com
+          #  - name: ATL_PROXY_PORT
+          #    value: "8080"
           #  - name: ATL_TOMCAT_SCHEME
-          #    value: https
-             # https
-           - name: ATL_TOMCAT_SECURE
-             value: "true"
+          #    value: http
+          #    # https
+          #  - name: ATL_TOMCAT_SECURE
+          #    value: "false"
              # Value = "true
            - name: CLUSTERED
              value: "true"

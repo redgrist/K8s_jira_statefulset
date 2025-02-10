@@ -38,7 +38,7 @@ spec:
     namespace: jira
     name: jira-pvc-shared
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   nfs:
     server: 192.168.22.160
     # Exported path of your NFS server
@@ -62,7 +62,7 @@ spec:
     namespace: jira
     name: jira-pvc-data
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   nfs:
     server: 192.168.22.160
     # Exported path of your NFS server
