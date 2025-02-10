@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: postgres-jira-data
+  name: postgress-jira-data
   namespace: jira
   labels:
-    app: postgres-jira
+    app: postgress-jira
     tier: frontend
 spec:
   storageClassName: standard
@@ -12,7 +12,7 @@ spec:
     storage: 10Gi
   claimRef:
     namespace: jira
-    name: postgres-jira-data
+    name: postgress-jira-data
   accessModes:
     - ReadWriteOnce
   nfs:
