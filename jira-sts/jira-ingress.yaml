@@ -20,3 +20,10 @@ spec:
             name: jira-set
             port:
               number: 8080
+
+
+# !!
+# ingress:   
+#   ...
+#   annotations: 
+#     nginx.ingress.kubernetes.io/session-cookie-name	: "CUSTOMCOOKIE"
