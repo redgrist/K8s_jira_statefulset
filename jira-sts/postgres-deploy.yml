@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jira-db-postgres  
+  name: jira-db-postgres 
   labels:                 
     app: jira-db-postgres
   namespace: jira
@@ -36,7 +36,8 @@ spec:
         app: jira-db-postgres
     spec:
       containers:
-      - image: postgres:11.11
+      - image: postgres:latest
+        imagePullPolicy: IfNotPresent
         resources:
            requests:
              memory: "2G"
@@ -46,7 +47,7 @@ spec:
              cpu: 4
         name: postgres
         env:
-          #  - name: POSTGRES_DB
+          #  - name: postgres_DB
           #    value: "jira"
            - name: POSTGRES_PASSWORD
              value: "jira"
@@ -54,10 +55,10 @@ spec:
              value: "jira"
            - name: PGDATA
              value: /var/lib/postgresql/data/jira
-           - name: POSTGRES_INITDB_ARGS
+           - name: postgres_INITDB_ARGS
              value: "--locale=en_US.UTF-8"
-          #  - name: POSTGRES_HOST_AUTH_METHOD
-          #    value: "password" 
+           - name: postgres_HOST_AUTH_METHOD
+             value: "password" 
         ports:
         - containerPort: 5432
           name: postgres-jira

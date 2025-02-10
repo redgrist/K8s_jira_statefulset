@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: postgress-jira-data
+  name: postgres-jira-data
   namespace: jira
   labels:
-    app: postgress-jira
+    app: postgres-jira
     tier: frontend
 spec:
   storageClassName: standard
@@ -12,13 +12,13 @@ spec:
     storage: 10Gi
   claimRef:
     namespace: jira
-    name: postgress-jira-data
+    name: postgres-jira-data
   accessModes:
     - ReadWriteOnce
   nfs:
     server: 192.168.22.160
     # Exported path of your NFS server
-    path: "/nfs/jira/postgress"
+    path: "/nfs/jira/postgres"
 
 ---
 
@@ -37,6 +37,30 @@ spec:
   claimRef:
     namespace: jira
     name: jira-pvc-shared
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 192.168.22.160
+    # Exported path of your NFS server
+    path: "/nfs/jira/shared"
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jira-pvc-data
+  namespace: jira
+  labels:
+    app: jira-set
+    tier: frontend
+spec:
+  storageClassName: standard
+  capacity:
+    storage: 10Gi
+  claimRef:
+    namespace: jira
+    name: jira-pvc-data
   accessModes:
     - ReadWriteOnce
   nfs:
