@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
       - image: postgres:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         resources:
            requests:
              memory: "2G"
